@@ -326,11 +326,9 @@ namespace VocaDb.Web.Controllers
 			ViewBag.ReportStatus = status;
 			PermissionContext.VerifyPermission(PermissionToken.ManageEntryReports);
 
-			var reports = Service.GetEntryReports(status);
-
 			PageProperties.Title = "View entry reports";
 
-			return View(reports);
+			return View("React/Index");
 		}
 
 		[Authorize]
