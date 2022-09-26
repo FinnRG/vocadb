@@ -29,7 +29,7 @@ export class ActivityEntryListViewModel {
 		additionsOnly?: boolean,
 	) {
 		this.additionsOnly = ko.observable(additionsOnly ?? false);
-		this.entryType = ko.observable(EntryType[EntryType.Undefined]);
+		this.entryType = ko.observable(EntryType.Undefined);
 		this.sort = ko.observable(
 			ActivityEntrySortRule[ActivityEntrySortRule.CreateDateDescending],
 		);

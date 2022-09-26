@@ -2,6 +2,7 @@ import { EntryContract } from '@/DataContracts/EntryContract';
 import { PVContract } from '@/DataContracts/PVs/PVContract';
 import { PVHelper } from '@/Helpers/PVHelper';
 import { VideoServiceHelper } from '@/Helpers/VideoServiceHelper';
+import { EntryType } from '@/Models/EntryType';
 import { ContentLanguagePreference } from '@/Models/Globalization/ContentLanguagePreference';
 import { AlbumRepository } from '@/Repositories/AlbumRepository';
 import { ReleaseEventRepository } from '@/Repositories/ReleaseEventRepository';
@@ -10,7 +11,6 @@ import { GlobalValues } from '@/Shared/GlobalValues';
 import { ServerSidePagingStore } from '@/Stores/ServerSidePagingStore';
 import {
 	EntryStatus,
-	EntryType,
 	PlayQueueAlbumContract,
 	PlayQueueEntryContract,
 	PlayQueueItemContract,
@@ -445,13 +445,13 @@ export class PlayQueueStore
 		pv?: PVContract,
 	): Promise<PlayQueueItem[]> => {
 		switch (entry.entryType) {
-			case EntryType[EntryType.Album]:
+			case EntryType.Album:
 				return this.loadItemsFromAlbum(entry, pv);
 
-			case EntryType[EntryType.ReleaseEvent]:
+			case EntryType.ReleaseEvent:
 				return this.loadItemsFromEvent(entry, pv);
 
-			case EntryType[EntryType.Song]:
+			case EntryType.Song:
 				return this.loadItemsFromSong(entry, pv);
 
 			default:

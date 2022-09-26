@@ -1,6 +1,7 @@
 import { PVContract } from '@/DataContracts/PVs/PVContract';
 import { PagingProperties } from '@/DataContracts/PagingPropertiesContract';
 import { PartialFindResultContract } from '@/DataContracts/PartialFindResultContract';
+import { EntryType } from '@/Models/EntryType';
 import { ContentLanguagePreference } from '@/Models/Globalization/ContentLanguagePreference';
 import { PVService } from '@/Models/PVs/PVService';
 import { SongType } from '@/Models/Songs/SongType';
@@ -27,13 +28,6 @@ export type PlayQueueRepositoryQueryParams =
 	| UserGetRatedSongsListQueryParams
 	| SongListGetSongsQueryParams
 	| SongGetListQueryParams;
-
-// TODO: Remove.
-export enum EntryType {
-	Album = 'Album',
-	ReleaseEvent = 'ReleaseEvent',
-	Song = 'Song',
-}
 
 // TODO: Remove.
 export enum EntryStatus {

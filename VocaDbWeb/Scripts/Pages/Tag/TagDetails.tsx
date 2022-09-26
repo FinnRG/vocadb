@@ -408,7 +408,7 @@ const TagDetailsLayout = observer(
 							disabled={
 								!loginManager.canEdit({
 									...tag,
-									entryType: EntryType[EntryType.Tag],
+									entryType: EntryType.Tag,
 								})
 							}
 							icons={{ primary: 'ui-icon-wrench' }}

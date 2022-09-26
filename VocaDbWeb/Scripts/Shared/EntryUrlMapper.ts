@@ -14,15 +14,11 @@ export class EntryUrlMapper {
 	// typeName: entry type name.
 	// id: entry Id.
 	public static details(
-		typeName: string | EntryType,
+		typeName: EntryType,
 		id: number,
 		urlFriendlyName?: string,
 	): string {
 		var prefix;
-
-		if (typeof typeName === 'string') {
-			typeName = EntryType[typeName as keyof typeof EntryType];
-		}
 
 		switch (typeName) {
 			case EntryType.Album:

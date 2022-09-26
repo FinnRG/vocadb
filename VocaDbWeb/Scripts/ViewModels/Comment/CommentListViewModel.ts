@@ -24,7 +24,7 @@ export class CommentListViewModel {
 		resourceRepo: ResourceRepository,
 		private userId?: number,
 	) {
-		this.entryType = ko.observable(EntryType[EntryType.Undefined]);
+		this.entryType = ko.observable(EntryType.Undefined);
 		this.sort = ko.observable(
 			CommentSortRule[CommentSortRule.CreateDateDescending],
 		);

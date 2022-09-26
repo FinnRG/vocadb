@@ -129,16 +129,16 @@ export const UserLanguageProficiencyDropdownList = React.memo(
 	},
 );
 
-const commentTargetTypes: string[] = [
-	EntryType[EntryType.Undefined],
-	EntryType[EntryType.Album],
-	EntryType[EntryType.Artist],
-	EntryType[EntryType.DiscussionTopic],
-	EntryType[EntryType.ReleaseEvent],
-	EntryType[EntryType.Song],
-	EntryType[EntryType.SongList],
-	EntryType[EntryType.Tag],
-	EntryType[EntryType.User],
+const commentTargetTypes: EntryType[] = [
+	EntryType.Undefined,
+	EntryType.Album,
+	EntryType.Artist,
+	EntryType.DiscussionTopic,
+	EntryType.ReleaseEvent,
+	EntryType.Song,
+	EntryType.SongList,
+	EntryType.Tag,
+	EntryType.User,
 ];
 
 export const CommentTargetTypeDropdownList = React.memo(
@@ -329,15 +329,15 @@ export const PVTypeDescriptionsDropdownList = React.memo(
 	},
 );
 
-const activityEntryTargetTypes: string[] = [
-	EntryType[EntryType.Undefined],
-	EntryType[EntryType.Album],
-	EntryType[EntryType.Artist],
-	EntryType[EntryType.ReleaseEvent],
-	EntryType[EntryType.Song],
-	EntryType[EntryType.SongList],
-	EntryType[EntryType.Tag],
-	EntryType[EntryType.Venue],
+const activityEntryTargetTypes: EntryType[] = [
+	EntryType.Undefined,
+	EntryType.Album,
+	EntryType.Artist,
+	EntryType.ReleaseEvent,
+	EntryType.Song,
+	EntryType.SongList,
+	EntryType.Tag,
+	EntryType.Venue,
 ];
 
 export const ActivityEntryTargetTypeDropdownList = React.memo(

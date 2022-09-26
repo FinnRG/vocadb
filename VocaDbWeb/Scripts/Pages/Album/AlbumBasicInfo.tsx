@@ -258,7 +258,7 @@ const AlbumBasicInfo = observer(
 									) : (
 										<a
 											href={`/Tag/DetailsByEntryType?${qs.stringify({
-												entryType: EntryType[EntryType.Album],
+												entryType: EntryType.Album,
 												subType: model.discType,
 											})}`}
 										>
@@ -284,7 +284,7 @@ const AlbumBasicInfo = observer(
 											disabled={
 												!loginManager.canEditTagsForEntry({
 													...model,
-													entryType: EntryType[EntryType.Album],
+													entryType: EntryType.Album,
 												})
 											}
 											icons={{ primary: 'ui-icon-tag' }}

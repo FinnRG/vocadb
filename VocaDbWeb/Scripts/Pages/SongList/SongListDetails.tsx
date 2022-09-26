@@ -256,7 +256,7 @@ const SongListDetailsLayout = observer(
 									disabled={
 										!loginManager.canEditTagsForEntry({
 											...songList,
-											entryType: EntryType[EntryType.SongList],
+											entryType: EntryType.SongList,
 										})
 									}
 									icons={{ primary: 'ui-icon-tag' }}

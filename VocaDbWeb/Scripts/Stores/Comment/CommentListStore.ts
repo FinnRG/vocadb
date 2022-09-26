@@ -38,7 +38,7 @@ enum EntryOptionalField {
 }
 
 interface CommentListRouteParams {
-	entryType?: string /* TODO: enum */;
+	entryType?: EntryType;
 	sort?: CommentSortRule;
 	userId?: number;
 }
@@ -59,7 +59,7 @@ const validate = ajv.compile(schema);
 export class CommentListStore
 	implements LocationStateStore<CommentListRouteParams> {
 	@observable public entries: EntryWithCommentsContract[] = [];
-	@observable public entryType = EntryType[EntryType.Undefined];
+	@observable public entryType = EntryType.Undefined;
 	@observable public lastEntryDate?: Date;
 	@observable public sort = CommentSortRule.CreateDateDescending;
 	public readonly user: BasicEntryLinkStore<UserBaseContract>;
@@ -85,7 +85,7 @@ export class CommentListStore
 		};
 	}
 	public set locationState(value: CommentListRouteParams) {
-		this.entryType = value.entryType ?? EntryType[EntryType.Undefined];
+		this.entryType = value.entryType ?? EntryType.Undefined;
 		this.sort = value.sort ?? CommentSortRule.CreateDateDescending;
 		this.user.id = value.userId;
 	}
