@@ -299,8 +299,8 @@ const ArtistBasicInfo = observer(
 											<>
 												{' '}
 												<JQueryUIButton
-													as="a"
-													href={`/Artist/ManageTagUsages/${artist.id}`}
+													as={Link}
+													to={`/Artist/ManageTagUsages/${artist.id}`}
 													icons={{ primary: 'ui-icon-wrench' }}
 												>
 													{t('ViewRes:EntryDetails.ManageTags')}
