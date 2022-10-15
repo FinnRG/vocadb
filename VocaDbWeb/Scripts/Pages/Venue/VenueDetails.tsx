@@ -57,7 +57,7 @@ const VenueDetailsLayout = ({
 			subtitle={t('ViewRes.Venue:Details.Venue')}
 			parents={
 				<>
-					<Breadcrumb.Item href="/Event/EventsByVenue">
+					<Breadcrumb.Item as={Link} to="/Event/EventsByVenue">
 						{t('ViewRes:Shared.Venues')}
 					</Breadcrumb.Item>
 				</>

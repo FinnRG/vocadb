@@ -94,13 +94,13 @@ const VenueEditLayout = observer(
 				parents={
 					isNew ? (
 						<>
-							<Breadcrumb.Item href="/Event/EventsByVenue">
+							<Breadcrumb.Item as={Link} to="/Event/EventsByVenue">
 								{t('ViewRes:Shared.Venues')}
 							</Breadcrumb.Item>
 						</>
 					) : (
 						<>
-							<Breadcrumb.Item href="/Event/EventsByVenue" divider>
+							<Breadcrumb.Item as={Link} to="/Event/EventsByVenue" divider>
 								{t('ViewRes:Shared.Venues')}
 							</Breadcrumb.Item>
 							<Breadcrumb.Item
