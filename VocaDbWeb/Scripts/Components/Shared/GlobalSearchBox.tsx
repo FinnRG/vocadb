@@ -208,7 +208,7 @@ export const GlobalSearchBox = observer(
 								<Dropdown.Item href={'/User/Login'} /* TODO: showLoginPopup */>
 									{t('ViewRes:Layout.LogIn')}
 								</Dropdown.Item>
-								<Dropdown.Item href={'/User/Create'}>
+								<Dropdown.Item as={Link} to="/User/Create">
 									{t('ViewRes:Layout.Register')}
 								</Dropdown.Item>
 							</>
