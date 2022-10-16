@@ -288,78 +288,14 @@ namespace VocaDb.Web.Controllers
 #nullable disable
 
 		[RestrictBannedIP]
-		public new ActionResult Login(string returnUrl = null)
+		public new ActionResult Login()
 		{
 			RestoreErrorsFromTempData();
 
-			return View(new LoginModel(returnUrl, false));
-		}
+			PageProperties.Title = Res.Login;
+			PageProperties.Robots = PagePropertiesData.Robots_Noindex_Nofollow;
 
-		[RestrictBannedIP]
-		public PartialViewResult LoginForm(string returnUrl)
-		{
-			return PartialView("Login", new LoginModel(returnUrl, false));
-		}
-
-		[HttpPost]
-		[RestrictBannedIP]
-		public new async Task<ActionResult> Login(LoginModel model)
-		{
-			if (ModelState.IsValid)
-			{
-				var host = WebHelper.GetRealHost(Request);
-				var culture = WebHelper.GetInterfaceCultureName(Request);
-				var result = Data.CheckAuthentication(model.UserName, model.Password, host, culture, true);
-
-				if (!result.IsOk)
-				{
-					ModelState.AddModelError("", ViewRes.User.LoginStrings.WrongPassword);
-
-					if (result.Error == LoginError.AccountPoisoned)
-						_ipRuleManager.AddTempBannedIP(host, "Account poisoned");
-				}
-				else
-				{
-					var user = result.User;
-
-					TempData.SetSuccessMessage(string.Format(ViewRes.User.LoginStrings.Welcome, user.Name));
-					await SetAuthCookieAsync(user.Name, model.KeepLoggedIn);
-
-					string redirectUrl = null;
-					// TODO: implement
-					/*try
-					{
-						redirectUrl = FormsAuthentication.GetRedirectUrl(model.UserName, true);
-					}
-					catch (HttpException x)
-					{
-						s_log.Warn(x, "Unable to get redirect URL");
-					}*/
-
-					string targetUrl;
-
-					// TODO: should not allow redirection to URLs outside the site
-					if (!string.IsNullOrEmpty(model.ReturnUrl))
-						targetUrl = model.ReturnUrl;
-					else if (!string.IsNullOrEmpty(redirectUrl))
-						targetUrl = redirectUrl;
-					else
-						targetUrl = Url.Action("Index", "Home");
-
-					if (model.ReturnToMainSite)
-						targetUrl = VocaUriBuilder.AbsoluteFromUnknown(targetUrl, preserveAbsolute: true);
-
-					return Redirect(targetUrl);
-				}
-			}
-
-			if (model.ReturnToMainSite)
-			{
-				SaveErrorsToTempData();
-				return Redirect(VocaUriBuilder.Absolute(Url.Action("Login", new { model.ReturnUrl })));
-			}
-
-			return View(model);
+			return View("React/Index");
 		}
 
 		[RestrictBannedIP]
