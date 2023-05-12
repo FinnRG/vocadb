@@ -1,15 +1,17 @@
 {
   "SongTypeNames": {
-    "Cover": "翻唱曲",
-    "DramaPV": "短剧PV",
-    "Instrumental": "纯音乐",
+    "Arrangement": "Arrangement",
+    "Cover": "Cover",
+    "DramaPV": "Drama PV",
+    "Illustration": "Illustration",
+    "Instrumental": "Instrumental",
     "Live": "Live recording",
-    "Mashup": "混搭曲",
-    "MusicPV": "音乐PV",
-    "Original": "原创曲",
-    "Other": "其他",
-    "Remaster": "重调版",
+    "Mashup": "Mashup",
+    "MusicPV": "Music PV",
+    "Original": "Original song",
+    "Other": "Other",
+    "Remaster": "Remaster",
     "Remix": "Remix",
-    "Unspecified": "未定义"
+    "Unspecified": "Unspecified"
   }
 }
