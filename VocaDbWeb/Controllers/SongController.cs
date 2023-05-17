@@ -35,6 +35,7 @@ namespace VocaDb.Web.Controllers;
 public class SongController : ControllerBase
 {
 	private static readonly Logger s_log = LogManager.GetCurrentClassLogger();
+	private readonly IWebHostEnvironment _environment;
 	private readonly MarkdownParser _markdownParser;
 	private readonly SongQueries _queries;
 	private readonly SongService _service;
@@ -45,6 +46,7 @@ public class SongController : ControllerBase
 	private SongService Service => _service;
 
 	public SongController(
+		IWebHostEnvironment environment,
 		SongService service,
 		SongQueries queries,
 		SongListQueries songListQueries,
@@ -53,6 +55,7 @@ public class SongController : ControllerBase
 		BrandableStringsManager brandableStringsManager
 	)
 	{
+		_environment = environment;
 		_service = service;
 		_queries = queries;
 		_songListQueries = songListQueries;
@@ -184,14 +187,15 @@ public class SongController : ControllerBase
 		prop.OpenGraph.Type = OpenGraphTypes.Song;
 
 		prop.Robots = model.Deleted ? PagePropertiesData.Robots_Noindex_Follow : string.Empty;
+		var bytes = ReactIndex.ToHtmlBytes(_environment, prop);
 
-		return File("index.html", "text/html") ;
+		return File(bytes, "text/html");
 	}
 
 	[Authorize]
 	public ActionResult Create(string pvUrl)
 	{
-		return File("index.html", "text/html") ;
+		return File("index.html", "text/html");
 	}
 
 	//
@@ -199,7 +203,7 @@ public class SongController : ControllerBase
 	[Authorize]
 	public ActionResult Edit(int id, int? albumId = null)
 	{
-		return File("index.html", "text/html") ;
+		return File("index.html", "text/html");
 	}
 
 	[HttpPost]
@@ -282,7 +286,7 @@ public class SongController : ControllerBase
 
 	public ActionResult Merge()
 	{
-		return File("index.html", "text/html") ;
+		return File("index.html", "text/html");
 	}
 
 	/// <summary>
@@ -357,7 +361,7 @@ public class SongController : ControllerBase
 	{
 		PageProperties.Title = _brandableStringsManager.Song.RankingsTitle;
 
-		return File("index.html", "text/html") ;
+		return File("index.html", "text/html");
 	}
 
 	public ActionResult Related(int id = InvalidId)
@@ -429,7 +433,7 @@ public class SongController : ControllerBase
 		PageProperties.Title = ViewRes.EntryDetailsStrings.Revisions + " - " + contract.Name;
 		PageProperties.Robots = PagePropertiesData.Robots_Noindex_Nofollow;
 
-		return File("index.html", "text/html") ;
+		return File("index.html", "text/html");
 	}
 
 	public ActionResult ViewVersion(int id, int? ComparedVersionId)
@@ -439,6 +443,6 @@ public class SongController : ControllerBase
 		PageProperties.Title = "Revision " + contract.ArchivedVersion.Version + " for " + contract.Name;
 		PageProperties.Robots = PagePropertiesData.Robots_Noindex_Nofollow;
 
-		return File("index.html", "text/html") ;
+		return File("index.html", "text/html");
 	}
 }
